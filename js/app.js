@@ -119,8 +119,8 @@
   function initMap() {
     var L = window.L;
     mapObj = L.map('map', { zoomControl: true, attributionControl: true }).setView([-6.88, 107.62], 11);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19, subdomains: 'abcd', attribution: '© OpenStreetMap © CARTO'
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '© OpenStreetMap contributors'
     }).addTo(mapObj);
     layer = L.layerGroup().addTo(mapObj);
     mapReady = true; loading = false;

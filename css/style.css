@@ -60,3 +60,7 @@ h3{margin:22px 4px 10px;font-weight:500;font-size:13px;color:#5d6468;letter-spac
 .pin{border-radius:50%;background:var(--dark);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .pin.pk{background:var(--pink)}
 .pin.hi{border-color:var(--pink);box-shadow:0 0 0 5px rgba(232,96,126,.35),0 1px 4px rgba(0,0,0,.35)}
+
+/* peta: tile OSM abu-abu minimalis; tombol zoom >=44px */
+.leaflet-tile-pane{filter:grayscale(1) contrast(.9) brightness(1.05)}
+.leaflet-touch .leaflet-bar a,.leaflet-bar a{width:44px;height:44px;line-height:44px;font-size:20px}

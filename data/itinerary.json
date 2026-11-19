@@ -29,7 +29,7 @@
         {"time": "Pagi", "title": "Aslam jemput Wulan", "place": "Jemput di kos", "note": "Bawa tas ya.", "route": null},
         {"time": "Pagi–siang", "title": "Jalan-jalan pilihan Wulan 🌸", "place": "Pilih di bagian bawah", "note": "Semua pilihan ada di “Pilih tempat Minggu”.", "route": null},
         {"time": "Siang", "title": "Makan siang & salat", "place": "Dekat tempat pilihan", "note": "", "route": null},
-        {"time": "Sore", "title": "Antar Wulan pulang", "place": "Jemput di kos", "note": "Sekalian kembalikan motor.", "route": null},
+        {"time": "Sore", "title": "Antar Wulan pulang", "place": "Ke kos", "note": "Sekalian kembalikan motor.", "route": null},
         {"time": "±18:00–19:00", "title": "Travel ke Jakarta", "place": "Pool travel", "note": "Pool menyusul.", "route": null}
       ]
     }
@@ -44,7 +44,7 @@
   "places": {
     "baltos": {"name": "Baltos", "area": "Bandung", "day": "jum", "lat": -6.898807, "lng": 107.608480, "src": "Brief (OSM/Nominatim)", "approx": false},
     "masjid": {"name": "Masjid Agung Trans Studio", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9259196, "lng": 107.635428, "src": "OSM/Nominatim: node place_of_worship 'Masjid Agung Trans Studio' (dicari FE 19 Nov)", "approx": false},
-    "expat": {"name": "Expat. Roasters Gatsu", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9298, "lng": 107.6392, "src": "Brief (perkiraan, tidak ketemu di Nominatim)", "approx": true},
+    "expat": {"name": "Expat. Roasters Gatot Subroto", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9298, "lng": 107.6392, "src": "Brief (perkiraan, tidak ketemu di Nominatim)", "approx": true},
     "damri": {"name": "Sate Damri", "area": "Cinambo, Bandung Timur", "day": "sab", "lat": -6.93714, "lng": 107.68602, "src": "Plus Code 3M7P+4CR didekode PM; FE cek reverse Nominatim: Jl. Cisaranten Wetan, Babakan Penghulu, Cinambo (wajar, perkiraan)", "approx": true},
     "hanami": {"name": "Hanami Cafe & Sky Lounge", "area": "Jl. Cihampelas 254, Bandung", "day": "min", "pick": true, "lat": -6.9060, "lng": 107.6044, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Sakura buatan dan rooftop, cantik buat foto.", "dist": "dekat"},
     "pvj": {"name": "Paris Van Java", "area": "Jl. Sukajadi, Bandung", "day": "min", "pick": true, "lat": -6.889073, "lng": 107.596093, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Ada kebun bunga matahari, mungkin musiman.", "dist": "dekat"},
