@@ -82,3 +82,23 @@ h3{margin:22px 4px 10px;font-weight:500;font-size:13px;color:#5d6468;letter-spac
 
 /* peta: tile OSM abu-abu minimalis; tombol zoom >=44px */
 .leaflet-touch .leaflet-bar a,.leaflet-bar a{width:44px;height:44px;line-height:44px;font-size:20px}
+
+/* galeri revisi-2 */
+.gal{position:relative;width:100%;height:100%}
+.gtrack{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.gtrack::-webkit-scrollbar{display:none}
+.gslide{flex:0 0 100%;width:100%;height:100%;padding:0;border:0;margin:0;background:var(--panel);scroll-snap-align:center;scroll-snap-stop:always;cursor:zoom-in;display:block}
+.gslide:focus-visible{outline:3px solid var(--pink);outline-offset:-3px}
+.gdots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.gdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 3px rgba(0,0,0,.4)}
+.gdots i.on{background:#fff;width:18px;border-radius:4px}
+.badge{z-index:2}
+body.noscroll{overflow:hidden}
+.lb{position:fixed;inset:0;z-index:3000;background:rgba(10,13,14,.96);display:flex;align-items:center}
+.lbtrack{display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.lbtrack::-webkit-scrollbar{display:none}
+.lbslide{flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;display:grid;place-items:center;padding:56px 8px}
+.lbslide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
+.lbclose{position:absolute;top:calc(8px + env(safe-area-inset-top));right:8px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:22px;cursor:pointer}
+.lbclose:focus-visible{outline:3px solid #fff}
+.lbcount{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));text-align:center;color:#fff;font-size:13px;pointer-events:none}

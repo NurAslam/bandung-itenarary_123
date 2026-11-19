@@ -1,61 +1,421 @@
 {
-  "title": "Bandung, 20–22 Nov",
-  "greeting": "Halo Wulan 🌸 ini rencana kita di Bandung. Tinggal pilih tempat buat hari Minggu ya.",
-  "days": [
+ "title": "Bandung, 20–22 Nov",
+ "greeting": "Halo Wulan 🌸 ini rencana kita di Bandung. Tinggal pilih tempat buat hari Minggu ya.",
+ "days": [
+  {
+   "id": "jum",
+   "label": "Jum",
+   "full": "Jumat, 20 Nov",
+   "items": [
     {
-      "id": "jum", "label": "Jum", "full": "Jumat, 20 Nov",
-      "items": [
-        {"time": "18:30", "title": "Aslam tiba di Baltos", "place": "Balubur Town Square (Baltos)", "note": "", "route": "Baltos Bandung", "pin": "baltos"},
-        {"time": "±19:00–19:30", "title": "Wulan jemput Aslam", "place": "Dari Cimahi", "note": "Macet Jumat sore, santai aja.", "route": null},
-        {"time": "19:30", "title": "Makan malam", "place": "Sekitar Baltos / Cipaganti", "note": "Tempat menyusul.", "route": null},
-        {"time": "21:00", "title": "Aslam antar Wulan pulang", "place": "Jemput di kos", "note": "Motor dibawa Aslam.", "route": null}
-      ]
+     "time": "18:30",
+     "title": "Aslam tiba di Baltos",
+     "place": "Balubur Town Square (Baltos)",
+     "note": "",
+     "route": "Baltos Bandung",
+     "pin": "baltos"
     },
     {
-      "id": "sab", "label": "Sab", "full": "Sabtu, 21 Nov",
-      "items": [
-        {"time": "06:45", "title": "Aslam berangkat jemput Wulan", "place": "Jemput di kos", "note": "", "route": null},
-        {"time": "07:45", "title": "Tiba di Masjid Agung Trans Studio", "place": "Jl. Gatot Subroto 289", "note": "Wulan login laptop & serahkan ke Aslam.", "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung", "pin": "masjid"},
-        {"time": "08:00–11:00", "title": "Kajian Khusus Muslimah “Ummu Musa – The Perfect Plan”", "place": "Masjid Agung Trans Studio · Ustadz Adi Hidayat", "note": "Wulan: bawa alas duduk, tumbler, kantong sandal.", "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung", "pin": "masjid"},
-        {"time": "08:00–11:00", "title": "Aslam ngoprek Hermes AI untuk Wulan", "place": "Expat. Roasters Gatot Subroto", "note": "Jl. Gatot Subroto 132–134, buka 08:00.", "route": "Expat. Roasters Jl. Gatot Subroto 132-134 Bandung", "pin": "expat"},
-        {"time": "11:15", "title": "Jemput Wulan", "place": "Masjid Agung Trans Studio", "note": "", "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung", "pin": "masjid"},
-        {"time": "Siang–sore", "title": "Di kafe: Wulan coba hasilnya", "place": "Expat. Roasters Gatot Subroto", "note": "Evaluasi + revisi bareng. Zuhur & Asar di sela-sela.", "route": "Expat. Roasters Jl. Gatot Subroto 132-134 Bandung", "pin": "expat"},
-        {"time": "17:30", "title": "Makan malam Sate Damri", "place": "Cinambo, Bandung Timur", "note": "Wulan pulang sebelum ±20:00.", "route": "Sate Damri Babakan Penghulu Cinambo", "pin": "damri"}
-      ]
+     "time": "±19:00–19:30",
+     "title": "Wulan jemput Aslam",
+     "place": "Dari Cimahi",
+     "note": "Macet Jumat sore, santai aja.",
+     "route": null
     },
     {
-      "id": "min", "label": "Min", "full": "Minggu, 22 Nov",
-      "items": [
-        {"time": "Pagi", "title": "Aslam jemput Wulan", "place": "Jemput di kos", "note": "Bawa tas ya.", "route": null},
-        {"time": "Pagi–siang", "pickSlot": true, "title": "Jalan-jalan pilihan Wulan 🌸", "place": "Pilih di bagian bawah", "note": "Semua pilihan ada di “Pilih tempat Minggu”.", "route": null},
-        {"time": "Siang", "title": "Makan siang & salat", "place": "Dekat tempat pilihan", "note": "", "route": null},
-        {"time": "Sore", "title": "Antar Wulan pulang", "place": "Ke kos", "note": "Sekalian kembalikan motor.", "route": null},
-        {"time": "±18:00–19:00", "title": "Travel ke Jakarta", "place": "Pool travel", "note": "Pool menyusul.", "route": null}
-      ]
+     "time": "19:30",
+     "title": "Makan malam",
+     "place": "Sekitar Baltos / Cipaganti",
+     "note": "Tempat menyusul.",
+     "route": null
+    },
+    {
+     "time": "21:00",
+     "title": "Aslam antar Wulan pulang",
+     "place": "Jemput di kos",
+     "note": "Motor dibawa Aslam.",
+     "route": null
     }
-  ],
-  "pickNote": "Jam buka & keramaian belum dicek, nanti dicek H-1.",
-  "groups": [
-    {"id": "dekat", "title": "Dekat kos Wulan", "places": ["hanami", "pvj"]},
-    {"id": "dago", "title": "Dago atas (±30 mnt)", "places": ["unos", "sinie"]},
-    {"id": "lembang", "title": "Lembang / Cikole (macet akhir pekan, berangkat pagi)", "places": ["gias", "bukit", "golden", "bruriram", "strobilus"]},
-    {"id": "jauh", "title": "Paling jauh", "places": ["tepi"]}
-  ],
-  "places": {
-    "baltos": {"name": "Baltos", "emoji": "🛍️", "area": "Bandung", "day": "jum", "lat": -6.898807, "lng": 107.608480, "src": "Brief (OSM/Nominatim)", "approx": false},
-    "masjid": {"name": "Masjid Agung Trans Studio", "emoji": "🕌", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9259196, "lng": 107.635428, "src": "OSM/Nominatim: node place_of_worship 'Masjid Agung Trans Studio' (dicari FE 19 Nov)", "approx": false},
-    "expat": {"name": "Expat. Roasters Gatot Subroto", "emoji": "☕", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9298, "lng": 107.6392, "src": "Brief (perkiraan, tidak ketemu di Nominatim)", "approx": true},
-    "damri": {"name": "Sate Damri", "emoji": "🍢", "area": "Cinambo, Bandung Timur", "day": "sab", "lat": -6.93714, "lng": 107.68602, "src": "Plus Code 3M7P+4CR didekode PM; FE cek reverse Nominatim: Jl. Cisaranten Wetan, Babakan Penghulu, Cinambo (wajar, perkiraan)", "approx": true},
-    "hanami": {"name": "Hanami Cafe & Sky Lounge", "emoji": "🌸", "foto": null, "area": "Jl. Cihampelas 254, Bandung", "day": "min", "pick": true, "lat": -6.9060, "lng": 107.6044, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Sakura buatan dan rooftop, cantik buat foto.", "dist": "dekat"},
-    "pvj": {"name": "Paris Van Java", "emoji": "🌻", "foto": "foto/minggu/pvj.jpg", "area": "Jl. Sukajadi, Bandung", "day": "min", "pick": true, "lat": -6.889073, "lng": 107.596093, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Ada kebun bunga matahari, mungkin musiman.", "dist": "dekat"},
-    "unos": {"name": "Unos Cafe", "emoji": "☕", "foto": "foto/minggu/unos.jpg", "area": "Jl. Dago Giri, Bandung", "day": "min", "pick": true, "lat": -6.8377, "lng": 107.6363, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Taman bunga dengan pemandangan kota.", "dist": "sedang"},
-    "sinie": {"name": "Sinie Garden", "emoji": "🌸", "foto": "foto/minggu/sinie.jpg", "area": "Pagerwangi, Lembang", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim (4 query) → tanpa pin", "approx": false, "desc": "Kebun bunga yang adem di Pagerwangi, Lembang.", "dist": "sedang"},
-    "gias": {"name": "Gia's Grange", "emoji": "☕", "foto": "foto/minggu/gias.jpg", "area": "Jl. Raya Tangkuban Parahu, Cibogo", "day": "min", "pick": true, "lat": -6.809227, "lng": 107.627776, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Spot santai di jalur Tangkuban Parahu.", "dist": "jauh"},
-    "bukit": {"name": "Bukit Strawberry", "emoji": "🍓", "foto": "foto/minggu/bukit.jpg", "area": "Jl. Raya Tangkuban Parahu 109, Cibogo", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim → tanpa pin", "approx": false, "desc": "Kebun stroberi di jalur Tangkuban Parahu.", "dist": "jauh"},
-    "golden": {"name": "Golden Pine (Orchid Forest)", "emoji": "🌲", "foto": "foto/minggu/golden.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.780199, "lng": 107.637932, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hutan pinus dan bunga di Orchid Forest Cikole.", "dist": "jauh"},
-    "bruriram": {"name": "Bruriram", "emoji": "🌸", "foto": "foto/minggu/bruriram.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.779563, "lng": 107.643721, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hydrangea dan pinus, suasana sejuk.", "dist": "jauh"},
-    "strobilus": {"name": "Strobilus Cafe & Resto", "emoji": "🍽️", "foto": "foto/minggu/strobilus.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.778904, "lng": 107.642608, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Makan di antara pinus dan hydrangea.", "dist": "jauh"},
-    "tepi": {"name": "Tepi Gunung", "emoji": "⛰️", "foto": "foto/minggu/tepi.jpg", "area": "Kertawangi, Cisarua, KBB", "day": "min", "pick": true, "lat": -6.807625, "lng": 107.558351, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Padang bunga di kaki gunung, paling jauh tapi paling lega.", "dist": "jauh"}
+   ]
   },
-  "sabRoute": ["masjid", "expat", "damri"]
+  {
+   "id": "sab",
+   "label": "Sab",
+   "full": "Sabtu, 21 Nov",
+   "items": [
+    {
+     "time": "06:45",
+     "title": "Aslam berangkat jemput Wulan",
+     "place": "Jemput di kos",
+     "note": "",
+     "route": null
+    },
+    {
+     "time": "07:45",
+     "title": "Tiba di Masjid Agung Trans Studio",
+     "place": "Jl. Gatot Subroto 289",
+     "note": "Wulan login laptop & serahkan ke Aslam.",
+     "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung",
+     "pin": "masjid"
+    },
+    {
+     "time": "08:00–11:00",
+     "title": "Kajian Khusus Muslimah “Ummu Musa – The Perfect Plan”",
+     "place": "Masjid Agung Trans Studio · Ustadz Adi Hidayat",
+     "note": "Wulan: bawa alas duduk, tumbler, kantong sandal.",
+     "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung",
+     "pin": "masjid"
+    },
+    {
+     "time": "08:00–11:00",
+     "title": "Aslam ngoprek Hermes AI untuk Wulan",
+     "place": "Expat. Roasters Gatot Subroto",
+     "note": "Jl. Gatot Subroto 132–134, buka 08:00.",
+     "route": "Expat. Roasters Jl. Gatot Subroto 132-134 Bandung",
+     "pin": "expat"
+    },
+    {
+     "time": "11:15",
+     "title": "Jemput Wulan",
+     "place": "Masjid Agung Trans Studio",
+     "note": "",
+     "route": "Masjid Agung Trans Studio Jl. Gatot Subroto 289 Bandung",
+     "pin": "masjid"
+    },
+    {
+     "time": "Siang–sore",
+     "title": "Di kafe: Wulan coba hasilnya",
+     "place": "Expat. Roasters Gatot Subroto",
+     "note": "Evaluasi + revisi bareng. Zuhur & Asar di sela-sela.",
+     "route": "Expat. Roasters Jl. Gatot Subroto 132-134 Bandung",
+     "pin": "expat"
+    },
+    {
+     "time": "17:30",
+     "title": "Makan malam Sate Damri",
+     "place": "Cinambo, Bandung Timur",
+     "note": "Wulan pulang sebelum ±20:00.",
+     "route": "Sate Damri Babakan Penghulu Cinambo",
+     "pin": "damri"
+    }
+   ]
+  },
+  {
+   "id": "min",
+   "label": "Min",
+   "full": "Minggu, 22 Nov",
+   "items": [
+    {
+     "time": "Pagi",
+     "title": "Aslam jemput Wulan",
+     "place": "Jemput di kos",
+     "note": "Bawa tas ya.",
+     "route": null
+    },
+    {
+     "time": "Pagi–siang",
+     "pickSlot": true,
+     "title": "Jalan-jalan pilihan Wulan 🌸",
+     "place": "Pilih di bagian bawah",
+     "note": "Semua pilihan ada di “Pilih tempat Minggu”.",
+     "route": null
+    },
+    {
+     "time": "Siang",
+     "title": "Makan siang & salat",
+     "place": "Dekat tempat pilihan",
+     "note": "",
+     "route": null
+    },
+    {
+     "time": "Sore",
+     "title": "Antar Wulan pulang",
+     "place": "Ke kos",
+     "note": "Sekalian kembalikan motor.",
+     "route": null
+    },
+    {
+     "time": "±18:00–19:00",
+     "title": "Travel ke Jakarta",
+     "place": "Pool travel",
+     "note": "Pool menyusul.",
+     "route": null
+    }
+   ]
+  }
+ ],
+ "pickNote": "Jam buka & keramaian belum dicek, nanti dicek H-1.",
+ "groups": [
+  {
+   "id": "dekat",
+   "title": "Dekat kos Wulan",
+   "places": [
+    "hanami",
+    "pvj"
+   ]
+  },
+  {
+   "id": "dago",
+   "title": "Dago atas (±30 mnt)",
+   "places": [
+    "unos",
+    "sinie"
+   ]
+  },
+  {
+   "id": "lembang",
+   "title": "Lembang / Cikole (macet akhir pekan, berangkat pagi)",
+   "places": [
+    "gias",
+    "bukit",
+    "golden",
+    "bruriram",
+    "strobilus"
+   ]
+  },
+  {
+   "id": "jauh",
+   "title": "Paling jauh",
+   "places": [
+    "tepi"
+   ]
+  }
+ ],
+ "places": {
+  "baltos": {
+   "name": "Baltos",
+   "emoji": "🛍️",
+   "area": "Bandung",
+   "day": "jum",
+   "lat": -6.898807,
+   "lng": 107.60848,
+   "src": "Brief (OSM/Nominatim)",
+   "approx": false
+  },
+  "masjid": {
+   "name": "Masjid Agung Trans Studio",
+   "emoji": "🕌",
+   "area": "Jl. Gatot Subroto, Bandung",
+   "day": "sab",
+   "lat": -6.9259196,
+   "lng": 107.635428,
+   "src": "OSM/Nominatim: node place_of_worship 'Masjid Agung Trans Studio' (dicari FE 19 Nov)",
+   "approx": false
+  },
+  "expat": {
+   "name": "Expat. Roasters Gatot Subroto",
+   "emoji": "☕",
+   "area": "Jl. Gatot Subroto, Bandung",
+   "day": "sab",
+   "lat": -6.9298,
+   "lng": 107.6392,
+   "src": "Brief (perkiraan, tidak ketemu di Nominatim)",
+   "approx": true
+  },
+  "damri": {
+   "name": "Sate Damri",
+   "emoji": "🍢",
+   "area": "Cinambo, Bandung Timur",
+   "day": "sab",
+   "lat": -6.93714,
+   "lng": 107.68602,
+   "src": "Plus Code 3M7P+4CR didekode PM; FE cek reverse Nominatim: Jl. Cisaranten Wetan, Babakan Penghulu, Cinambo (wajar, perkiraan)",
+   "approx": true
+  },
+  "hanami": {
+   "name": "Hanami Cafe & Sky Lounge",
+   "emoji": "🌸",
+   "area": "Jl. Cihampelas 254, Bandung",
+   "day": "min",
+   "pick": true,
+   "lat": -6.906,
+   "lng": 107.6044,
+   "src": "Brief (perkiraan level jalan)",
+   "approx": true,
+   "desc": "Sakura buatan dan rooftop, cantik buat foto.",
+   "dist": "dekat",
+   "photos": []
+  },
+  "pvj": {
+   "name": "Paris Van Java",
+   "emoji": "🌻",
+   "area": "Jl. Sukajadi, Bandung",
+   "day": "min",
+   "pick": true,
+   "lat": -6.8895822,
+   "lng": 107.5959003,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Ada kebun bunga matahari, mungkin musiman.",
+   "dist": "dekat",
+   "maps": "https://maps.app.goo.gl/rF7iRzdqutbHY6YU8",
+   "photos": [
+    "foto/minggu/pvj-1.jpg",
+    "foto/minggu/pvj-2.jpg",
+    "foto/minggu/pvj-3.jpg",
+    "foto/minggu/pvj-4.jpg",
+    "foto/minggu/pvj-5.jpg"
+   ]
+  },
+  "unos": {
+   "name": "Unos Cafe",
+   "emoji": "☕",
+   "area": "Jl. Dago Giri, Bandung",
+   "day": "min",
+   "pick": true,
+   "lat": -6.8377,
+   "lng": 107.6363,
+   "src": "Brief (perkiraan level jalan)",
+   "approx": true,
+   "desc": "Taman bunga dengan pemandangan kota.",
+   "dist": "sedang",
+   "photos": [
+    "foto/minggu/unos.jpg"
+   ]
+  },
+  "sinie": {
+   "name": "Sinie Garden",
+   "emoji": "🌸",
+   "area": "Pagerwangi, Lembang",
+   "day": "min",
+   "pick": true,
+   "lat": -6.8305625,
+   "lng": 107.6343125,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Kebun bunga yang adem di Pagerwangi, Lembang.",
+   "dist": "sedang",
+   "maps": "https://maps.app.goo.gl/AJ3VdTvinuGu1uUk7",
+   "photos": [
+    "foto/minggu/sinie-1.jpg",
+    "foto/minggu/sinie-2.jpg",
+    "foto/minggu/sinie-3.jpg",
+    "foto/minggu/sinie-4.jpg",
+    "foto/minggu/sinie-5.jpg"
+   ]
+  },
+  "gias": {
+   "name": "Gia's Grange",
+   "emoji": "☕",
+   "area": "Jl. Raya Tangkuban Parahu, Cibogo",
+   "day": "min",
+   "pick": true,
+   "lat": -6.8095926,
+   "lng": 107.6278104,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Spot santai di jalur Tangkuban Parahu.",
+   "dist": "jauh",
+   "maps": "https://maps.app.goo.gl/DkaEhLvvmKdAx5Hj7",
+   "photos": [
+    "foto/minggu/gias-1.jpg",
+    "foto/minggu/gias-2.jpg",
+    "foto/minggu/gias-3.jpg",
+    "foto/minggu/gias-4.jpg",
+    "foto/minggu/gias-5.jpg"
+   ]
+  },
+  "bukit": {
+   "name": "Bukit Strawberry",
+   "emoji": "🍓",
+   "area": "Jl. Raya Tangkuban Parahu 109, Cibogo",
+   "day": "min",
+   "pick": true,
+   "lat": -6.8083974,
+   "lng": 107.6371652,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Kebun stroberi di jalur Tangkuban Parahu.",
+   "dist": "jauh",
+   "maps": "https://maps.app.goo.gl/CvfSkSs8CzFfHWg89",
+   "photos": [
+    "foto/minggu/bukit-1.jpg",
+    "foto/minggu/bukit-2.jpg",
+    "foto/minggu/bukit-3.jpg"
+   ]
+  },
+  "golden": {
+   "name": "Golden Pine (Orchid Forest)",
+   "emoji": "🌲",
+   "area": "Cikole, Lembang",
+   "day": "min",
+   "pick": true,
+   "lat": -6.7798442,
+   "lng": 107.6381827,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Hutan pinus dan bunga di Orchid Forest Cikole.",
+   "dist": "jauh",
+   "maps": "https://maps.app.goo.gl/5L766wLgPHfGxhjKA",
+   "photos": [
+    "foto/minggu/golden-1.jpg",
+    "foto/minggu/golden-2.jpg",
+    "foto/minggu/golden-3.jpg",
+    "foto/minggu/golden-4.jpg",
+    "foto/minggu/golden-5.jpg"
+   ]
+  },
+  "bruriram": {
+   "name": "Bruriram",
+   "emoji": "🌸",
+   "area": "Cikole, Lembang",
+   "day": "min",
+   "pick": true,
+   "lat": -6.7795633,
+   "lng": 107.6437206,
+   "src": "Google Maps link user 19 Nov",
+   "approx": false,
+   "desc": "Hydrangea dan pinus, suasana sejuk.",
+   "dist": "jauh",
+   "maps": "https://maps.app.goo.gl/baibHzkyX1b1fKeb7",
+   "photos": [
+    "foto/minggu/bruriram-1.jpg",
+    "foto/minggu/bruriram-2.jpg",
+    "foto/minggu/bruriram-3.jpg",
+    "foto/minggu/bruriram-4.jpg",
+    "foto/minggu/bruriram-5.jpg"
+   ]
+  },
+  "strobilus": {
+   "name": "Strobilus Cafe & Resto",
+   "emoji": "🍽️",
+   "area": "Cikole, Lembang",
+   "day": "min",
+   "pick": true,
+   "lat": -6.778904,
+   "lng": 107.642608,
+   "src": "Brief (OSM/Nominatim)",
+   "approx": false,
+   "desc": "Makan di antara pinus dan hydrangea.",
+   "dist": "jauh",
+   "photos": [
+    "foto/minggu/strobilus-1.jpg",
+    "foto/minggu/strobilus-2.jpg",
+    "foto/minggu/strobilus-3.jpg",
+    "foto/minggu/strobilus-4.jpg",
+    "foto/minggu/strobilus-5.jpg"
+   ]
+  },
+  "tepi": {
+   "name": "Tepi Gunung",
+   "emoji": "⛰️",
+   "area": "Kertawangi, Cisarua, KBB",
+   "day": "min",
+   "pick": true,
+   "lat": -6.807625,
+   "lng": 107.558351,
+   "src": "Brief (OSM/Nominatim)",
+   "approx": false,
+   "desc": "Padang bunga di kaki gunung, paling jauh tapi paling lega.",
+   "dist": "jauh",
+   "photos": [
+    "foto/minggu/tepi.jpg"
+   ]
+  }
+ },
+ "sabRoute": [
+  "masjid",
+  "expat",
+  "damri"
+ ]
 }

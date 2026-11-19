@@ -17,7 +17,7 @@
     return a;
   }
   function routeUrl(q) { return 'https://www.google.com/maps/dir/?api=1&destination=' + enc(q) + '&travelmode=driving'; }
-  function mapsUrl(p) { return 'https://www.google.com/maps/search/?api=1&query=' + enc(p.name + ' ' + p.area); }
+  function mapsUrl(p) { if (p.maps) return p.maps; return 'https://www.google.com/maps/search/?api=1&query=' + enc(p.name + ' ' + p.area); }
   function getSel() {
     var v = '';
     try { v = localStorage.getItem(KEY) || ''; } catch (e) {}
@@ -45,6 +45,77 @@
     return s;
   }
 
+  /* ---------- Galeri ---------- */
+  function gallery(p) {
+    var n = p.photos.length, wrap = el('div', 'gal');
+    var track = el('div', 'gtrack');
+    p.photos.forEach(function (src, i) {
+      var b = el('button', 'gslide'); b.type = 'button';
+      b.setAttribute('aria-label', p.name + ' \u2014 foto ' + (i + 1) + ' (buka besar)');
+      var im = el('img'); im.src = src; im.alt = p.name + ' \u2014 foto ' + (i + 1); im.decoding = 'async'; im.draggable = false;
+      if (i > 0) im.loading = 'lazy';
+      b.appendChild(im);
+      b.onclick = function () { openLightbox(p, i, b); };
+      track.appendChild(b);
+    });
+    wrap.appendChild(track);
+    if (n > 1) {
+      var dots = el('div', 'gdots'); dots.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) dots.appendChild(el('i', i === 0 ? 'on' : ''));
+      wrap.appendChild(dots);
+      var raf = 0;
+      track.addEventListener('scroll', function () {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = 0;
+          var k = Math.round(track.scrollLeft / track.clientWidth);
+          for (var j = 0; j < dots.children.length; j++) dots.children[j].classList.toggle('on', j === k);
+        });
+      }, { passive: true });
+    }
+    return wrap;
+  }
+  var lb = null;
+  function openLightbox(p, idx, opener) {
+    if (lb) return;
+    var ov = el('div', 'lb'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', p.name + ' \u2014 foto');
+    var track = el('div', 'lbtrack');
+    p.photos.forEach(function (src, i) {
+      var s = el('div', 'lbslide');
+      var im = el('img'); im.src = src; im.alt = p.name + ' \u2014 foto ' + (i + 1); im.draggable = false;
+      s.appendChild(im); track.appendChild(s);
+    });
+    var close = el('button', 'lbclose', '\u2715'); close.type = 'button'; close.setAttribute('aria-label', 'Tutup');
+    var cnt = el('div', 'lbcount', (idx + 1) + ' / ' + p.photos.length); if (p.photos.length < 2) cnt.hidden = true;
+    ov.appendChild(track); ov.appendChild(close); ov.appendChild(cnt);
+    document.body.appendChild(ov);
+    document.body.classList.add('noscroll');
+    track.scrollLeft = idx * track.clientWidth;
+    track.addEventListener('scroll', function () { cnt.textContent = (Math.round(track.scrollLeft / track.clientWidth) + 1) + ' / ' + p.photos.length; }, { passive: true });
+    function shut() {
+      document.removeEventListener('keydown', key, true);
+      ov.remove(); document.body.classList.remove('noscroll'); lb = null;
+      if (opener && opener.isConnected) { opener.focus(); }
+    }
+    function key(e) {
+      if (e.key === 'Escape') { e.preventDefault(); shut(); }
+      else if (e.key === 'Tab') { e.preventDefault(); close.focus(); }
+      else if (e.key === 'ArrowRight') track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      else if (e.key === 'ArrowLeft') track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+    }
+    document.addEventListener('keydown', key, true);
+    close.onclick = shut;
+    ov.addEventListener('click', function (e) { if (e.target === ov || e.target.classList.contains('lbslide')) shut(); });
+    var y0 = null, x0 = 0;
+    ov.addEventListener('touchstart', function (e) { y0 = e.touches[0].clientY; x0 = e.touches[0].clientX; }, { passive: true });
+    ov.addEventListener('touchend', function (e) {
+      if (y0 == null) return;
+      var dy = e.changedTouches[0].clientY - y0, dx = e.changedTouches[0].clientX - x0; y0 = null;
+      if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) shut();
+    }, { passive: true });
+    lb = ov; close.focus();
+  }
+
   /* ---------- Rencana ---------- */
   function renderChips() {
     var box = $('dayChips'); box.textContent = '';
@@ -68,12 +139,13 @@
         title = 'Jalan-jalan pilihan Wulan: ' + sp.name + ' 🌸'; place = sp.area; note = '';
         route = sp.name + ' ' + sp.area;
       }
+      var rhref = (it.pickSlot && sp && sp.maps) ? sp.maps : (route ? routeUrl(route) : '');
       li.appendChild(el('div', 'time' + (it.time.length > 7 ? ' long' : ''), it.time));
       var r = el('div');
       r.appendChild(el('h4', '', title));
       if (place) r.appendChild(el('div', 'place', place));
       if (note) r.appendChild(el('div', 'inote', note));
-      if (route) r.appendChild(link('btn', 'Rute', routeUrl(route)));
+      if (route) r.appendChild(link('btn', 'Rute', rhref));
       li.appendChild(r);
       ol.appendChild(li);
     });
@@ -87,11 +159,9 @@
       g.places.forEach(function (id) {
         var p = D.places[id];
         var c = el('div', 'card' + (sel === id ? ' sel' : ''));
-        var ph = el('div', 'photo' + (p.foto ? '' : ' nophoto'));
-        if (p.foto) {
-          var im = el('img'); im.src = p.foto; im.loading = 'lazy'; im.alt = p.name; im.decoding = 'async';
-          ph.appendChild(im);
-        } else { ph.appendChild(icon(PICON[id])); }
+        var ph = el('div', 'photo' + (p.photos && p.photos.length ? '' : ' nophoto'));
+        if (p.photos && p.photos.length) { ph.appendChild(gallery(p)); }
+        else { ph.appendChild(icon(PICON[id])); }
         if (sel === id) ph.appendChild(el('span', 'badge', '✓ Pilihan Wulan'));
         c.appendChild(ph);
         var cb = el('div', 'cbody'); c.appendChild(cb);
@@ -174,11 +244,11 @@
   }
   function popup(p) {
     var d = el('div', 'pp');
-    if (p.foto) { var im = el('img', 'ppimg'); im.src = p.foto; im.alt = p.name; im.loading = 'lazy'; d.appendChild(im); }
+    if (p.photos && p.photos.length) { var im = el('img', 'ppimg'); im.src = p.photos[0]; im.alt = p.name; im.loading = 'lazy'; d.appendChild(im); }
     d.appendChild(el('b', '', (p.emoji ? p.emoji + ' ' : '') + p.name));
     var day = D.days.filter(function (x) { return x.id === p.day; })[0];
     d.appendChild(el('small', '', day ? day.full : ''));
-    d.appendChild(link('btn', 'Rute', routeUrl(p.name + ' ' + p.area)));
+    d.appendChild(link('btn', 'Rute', p.maps || routeUrl(p.name + ' ' + p.area)));
     return d;
   }
   function drawMap() {
