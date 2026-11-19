@@ -247,7 +247,7 @@
     if (p.photos && p.photos.length) { var im = el('img', 'ppimg'); im.src = p.photos[0]; im.alt = p.name; im.loading = 'lazy'; d.appendChild(im); }
     d.appendChild(el('b', '', (p.emoji ? p.emoji + ' ' : '') + p.name));
     var day = D.days.filter(function (x) { return x.id === p.day; })[0];
-    d.appendChild(el('small', '', day ? day.full : ''));
+    d.appendChild(el('small', '', p.dayLabel || (day ? day.full : '')));
     d.appendChild(link('btn', 'Rute', p.maps || routeUrl(p.name + ' ' + p.area)));
     return d;
   }
@@ -257,7 +257,7 @@
     Object.keys(D.places).forEach(function (id) {
       var p = D.places[id];
       if (p.lat == null) return;
-      var show = mapFilter === 'semua' ? true : mapFilter === 'pilihan' ? id === sel : p.day === mapFilter;
+      var show = (mapFilter === 'semua' || p.always) ? true : mapFilter === 'pilihan' ? id === sel : p.day === mapFilter;
       if (show) ids.push(id);
     });
     if (mapFilter === 'sab' || mapFilter === 'semua') {
@@ -281,7 +281,7 @@
     else if (pts.length === 1) mapObj.setView(pts[0], 14);
   }
   function missing() {
-    var m = Object.keys(D.places).filter(function (k) { return D.places[k].lat == null; }).map(function (k) { return D.places[k].name; });
+    var m = Object.keys(D.places).filter(function (k) { return D.places[k].lat == null && !D.places[k].always; }).map(function (k) { return D.places[k].name; });
     return m.length ? 'Belum ada pin: ' + m.join(', ') + '.' : '';
   }
 
@@ -292,6 +292,6 @@
     renderChips(); renderTimeline(); renderPick();
     document.querySelectorAll('.tabbtn').forEach(function (b) { b.onclick = function () { showTab(b.dataset.tab); }; });
   }
-  fetch('data/itinerary.json?v=1853').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
+  fetch('data/itinerary.json?v=1857').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
     .catch(function () { document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Data belum bisa dimuat. Coba muat ulang.</p>'); });
 })();

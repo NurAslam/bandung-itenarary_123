@@ -396,6 +396,19 @@
       "photos": [
         "foto/minggu/tepi.jpg"
       ]
+    },
+    "kos": {
+      "name": "Area kos Wulan",
+      "emoji": "🏠",
+      "area": "Cipaganti, Bandung",
+      "day": "kos",
+      "always": true,
+      "dayLabel": "Titik jemput tiap hari (lokasi perkiraan area)",
+      "lat": -6.8885,
+      "lng": 107.6015,
+      "approx": true,
+      "maps": "https://www.google.com/maps/search/?api=1&query=Cipaganti%2C%20Coblong%2C%20Bandung",
+      "src": "Sengaja digeser ~500 m dari lokasi asli (keputusan user A, privasi)"
     }
   },
   "sabRoute": [
