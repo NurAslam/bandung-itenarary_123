@@ -136,7 +136,7 @@
       var li = el('li', 'item');
       var title = it.title, place = it.place, note = it.note, route = it.route;
       if (it.pickSlot && sp) {
-        title = 'Jalan-jalan pilihan Wulan: ' + sp.name + ' 🌸'; place = sp.area; note = '';
+        title = 'Jalan-jalan pilihan Wulan: ' + sp.name; place = sp.area; note = '';
         route = sp.name + ' ' + sp.area;
       }
       var rhref = (it.pickSlot && sp && sp.maps) ? sp.maps : (route ? routeUrl(route) : '');
@@ -179,7 +179,7 @@
           pb = el('button', 'btn ghost', 'Batal pilih'); pb.type = 'button';
           pb.onclick = function () { choose(''); };
         } else {
-          pb = el('button', 'btn pink', 'Aku pilih ini 💌'); pb.type = 'button';
+          pb = el('button', 'btn pink', 'Aku pilih ini'); pb.type = 'button';
           pb.onclick = function () { choose(id); };
         }
         row.appendChild(pb);
@@ -191,13 +191,13 @@
     bar.hidden = false;
     if (sel) {
       bar.className = 'chosen on';
-      bar.appendChild(el('span', 'ctext', 'Minggu ini kita ke: ' + D.places[sel].name + ' 🌸'));
+      bar.appendChild(el('span', 'ctext', 'Minggu ini kita ke: ' + D.places[sel].name));
       var cb2 = el('button', 'btn ghost sm', 'Batal'); cb2.type = 'button';
       cb2.onclick = function () { choose(''); };
       bar.appendChild(cb2);
     } else {
       bar.className = 'chosen';
-      bar.appendChild(el('span', 'ctext', 'Belum ada pilihan. Pilih satu tempat di bawah ya 🌸'));
+      bar.appendChild(el('span', 'ctext', 'Belum ada pilihan. Pilih satu tempat di bawah ya'));
     }
   }
 
@@ -280,7 +280,7 @@
       pts.push([p.lat, p.lng]);
     });
     var note = '';
-    if (mapFilter === 'pilihan' && !sel) note = 'Belum ada pilihan Minggu. Pilih dulu di tab Rencana 🌸';
+    if (mapFilter === 'pilihan' && !sel) note = 'Belum ada pilihan Minggu. Pilih dulu di tab Rencana';
     else if (sel && D.places[sel].lat == null && (mapFilter === 'pilihan' || mapFilter === 'min' || mapFilter === 'semua')) note = D.places[sel].name + ' belum punya pin (koordinat belum ketemu). Pakai tombol Maps di kartunya.';
     else if (mapFilter === 'min' || mapFilter === 'semua') note = missing();
     $('mapNote').textContent = note;
@@ -299,6 +299,6 @@
     renderChips(); renderTimeline(); renderPick();
     document.querySelectorAll('.tabbtn').forEach(function (b) { b.onclick = function () { showTab(b.dataset.tab); }; });
   }
-  fetch('data/itinerary.json?v=1902').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
+  fetch('data/itinerary.json?v=1910').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
     .catch(function () { document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Data belum bisa dimuat. Coba muat ulang.</p>'); });
 })();

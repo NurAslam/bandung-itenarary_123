@@ -1,6 +1,6 @@
 {
   "title": "Bandung, 20–22 Nov",
-  "greeting": "Halo Wulan 🌸 ini rencana kita di Bandung. Tinggal pilih tempat buat hari Minggu ya.",
+  "greeting": "Halo Wulan ini rencana kita di Bandung. Tinggal pilih tempat buat hari Minggu ya.",
   "days": [
     {
       "id": "jum",
@@ -115,7 +115,7 @@
         {
           "time": "Pagi–siang",
           "pickSlot": true,
-          "title": "Jalan-jalan pilihan Wulan 🌸",
+          "title": "Jalan-jalan pilihan Wulan",
           "place": "Pilih di bagian bawah",
           "note": "Semua pilihan ada di “Pilih tempat Minggu”.",
           "route": null
