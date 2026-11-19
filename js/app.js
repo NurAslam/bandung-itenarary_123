@@ -260,10 +260,17 @@
       var show = (mapFilter === 'semua' || p.always) ? true : mapFilter === 'pilihan' ? id === sel : p.day === mapFilter;
       if (show) ids.push(id);
     });
-    if (mapFilter === 'sab' || mapFilter === 'semua') {
-      var line = D.sabRoute.map(function (id) { var p = D.places[id]; return [p.lat, p.lng]; });
-      L.polyline(line, { color: '#252B2C', weight: 2.5, dashArray: '6 8', opacity: .8 }).addTo(layer);
-    }
+    var RC = { jum: '#3B82C4', sab: '#3FA66B', min: '#E8607E' };
+    Object.keys(D.routes || {}).forEach(function (dy) {
+      if (!(mapFilter === 'semua' || mapFilter === dy || (dy === 'min' && mapFilter === 'pilihan'))) return;
+      var line = [];
+      D.routes[dy].forEach(function (id) {
+        if (id === '$pick') id = sel;
+        var p = id && D.places[id];
+        if (p && p.lat != null) { var q = line[line.length - 1]; if (!q || q[0] !== p.lat || q[1] !== p.lng) line.push([p.lat, p.lng]); }
+      });
+      if (line.length > 1) L.polyline(line, { color: RC[dy], weight: 3, dashArray: '6 8', opacity: .85 }).addTo(layer);
+    });
     ids.forEach(function (id) {
       var p = D.places[id], isSel = id === sel;
       var size = isSel ? 44 : 32;
@@ -292,6 +299,6 @@
     renderChips(); renderTimeline(); renderPick();
     document.querySelectorAll('.tabbtn').forEach(function (b) { b.onclick = function () { showTab(b.dataset.tab); }; });
   }
-  fetch('data/itinerary.json?v=1857').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
+  fetch('data/itinerary.json?v=1902').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
     .catch(function () { document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Data belum bisa dimuat. Coba muat ulang.</p>'); });
 })();

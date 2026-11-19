@@ -415,5 +415,23 @@
     "masjid",
     "expat",
     "damri"
-  ]
+  ],
+  "routes": {
+    "jum": [
+      "baltos",
+      "kos"
+    ],
+    "sab": [
+      "kos",
+      "masjid",
+      "expat",
+      "damri",
+      "kos"
+    ],
+    "min": [
+      "kos",
+      "$pick",
+      "kos"
+    ]
+  }
 }
