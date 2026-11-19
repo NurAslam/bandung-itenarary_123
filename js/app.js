@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var KEY = 'bandung-pilihan-minggu';
-  var D, curDay = 'jum', mapObj = null, mapReady = false, layer = null, mapFilter = 'sab';
+  var D, curDay = 'jum', mapObj = null, mapReady = false, layer = null, mapFilter = 'semua';
   var $ = function (id) { return document.getElementById(id); };
   var enc = encodeURIComponent;
 
@@ -18,9 +18,16 @@
   }
   function routeUrl(q) { return 'https://www.google.com/maps/dir/?api=1&destination=' + enc(q) + '&travelmode=driving'; }
   function mapsUrl(p) { return 'https://www.google.com/maps/search/?api=1&query=' + enc(p.name + ' ' + p.area); }
-  function waUrl(p) { return 'https://wa.me/?text=' + enc('Aku pilih ' + p.name + ' buat Minggu ya! 🌸'); }
-  function getSel() { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
-  function setSel(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function getSel() {
+    var v = '';
+    try { v = localStorage.getItem(KEY) || ''; } catch (e) {}
+    return (D && D.places[v] && D.places[v].pick) ? v : '';
+  }
+  function setSel(v) { try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {} }
+  function choose(id) {
+    setSel(id); renderTimeline(); renderPick();
+    if (mapReady) { drawMap(); }
+  }
 
   var ICONS = {
     flower: '<circle cx="12" cy="12" r="2.4"/><path d="M12 9.6c-1.6-3 0-5.6 0-5.6s1.6 2.6 0 5.6zM14.4 12c3-1.6 5.6 0 5.6 0s-2.6 1.6-5.6 0zM12 14.4c1.6 3 0 5.6 0 5.6s-1.6-2.6 0-5.6zM9.6 12c-3 1.6-5.6 0-5.6 0s2.6-1.6 5.6 0z"/>',
@@ -53,14 +60,20 @@
     var ol = $('timeline'); ol.textContent = '';
     var day = D.days.filter(function (d) { return d.id === curDay; })[0];
     var h = el('li', 'dayh'); h.style.cssText = 'color:#5d6468;font-size:13px;padding:0 6px'; h.textContent = day.full; ol.appendChild(h);
+    var sel = getSel(), sp = sel ? D.places[sel] : null;
     day.items.forEach(function (it) {
       var li = el('li', 'item');
+      var title = it.title, place = it.place, note = it.note, route = it.route;
+      if (it.pickSlot && sp) {
+        title = 'Jalan-jalan pilihan Wulan: ' + sp.name + ' 🌸'; place = sp.area; note = '';
+        route = sp.name + ' ' + sp.area;
+      }
       li.appendChild(el('div', 'time' + (it.time.length > 7 ? ' long' : ''), it.time));
       var r = el('div');
-      r.appendChild(el('h4', '', it.title));
-      if (it.place) r.appendChild(el('div', 'place', it.place));
-      if (it.note) r.appendChild(el('div', 'inote', it.note));
-      if (it.route) r.appendChild(link('btn', 'Rute', routeUrl(it.route)));
+      r.appendChild(el('h4', '', title));
+      if (place) r.appendChild(el('div', 'place', place));
+      if (note) r.appendChild(el('div', 'inote', note));
+      if (route) r.appendChild(link('btn', 'Rute', routeUrl(route)));
       li.appendChild(r);
       ol.appendChild(li);
     });
@@ -74,25 +87,48 @@
       g.places.forEach(function (id) {
         var p = D.places[id];
         var c = el('div', 'card' + (sel === id ? ' sel' : ''));
-        var top = el('div', 'ctop'); top.appendChild(icon(PICON[id]));
+        var ph = el('div', 'photo' + (p.foto ? '' : ' nophoto'));
+        if (p.foto) {
+          var im = el('img'); im.src = p.foto; im.loading = 'lazy'; im.alt = p.name; im.decoding = 'async';
+          ph.appendChild(im);
+        } else { ph.appendChild(icon(PICON[id])); }
+        if (sel === id) ph.appendChild(el('span', 'badge', '✓ Pilihan Wulan'));
+        c.appendChild(ph);
+        var cb = el('div', 'cbody'); c.appendChild(cb);
+        var top = el('div', 'ctop');
         var t = el('div');
         var h = el('h4', '', p.name);
         h.appendChild(el('span', 'tag', p.dist));
         t.appendChild(h); t.appendChild(el('div', 'area', p.area));
-        top.appendChild(t); c.appendChild(top);
-        c.appendChild(el('p', 'desc', p.desc));
+        top.appendChild(t); cb.appendChild(top);
+        cb.appendChild(el('p', 'desc', p.desc));
         var row = el('div', 'row');
         row.appendChild(link('btn ghost', 'Maps', mapsUrl(p)));
-        var pb = link('btn pink', sel === id ? 'Pilihanmu ✓ (ganti/kirim lagi)' : 'Aku pilih ini 💌', waUrl(p));
-        pb.addEventListener('click', function () { setSel(id); setTimeout(renderPick, 0); if (mapReady) drawMap(); });
+        var pb;
+        if (sel === id) {
+          pb = el('button', 'btn ghost', 'Batal pilih'); pb.type = 'button';
+          pb.onclick = function () { choose(''); };
+        } else {
+          pb = el('button', 'btn pink', 'Aku pilih ini 💌'); pb.type = 'button';
+          pb.onclick = function () { choose(id); };
+        }
         row.appendChild(pb);
-        c.appendChild(row);
+        cb.appendChild(row);
         box.appendChild(c);
       });
     });
-    var bar = $('chosenBar');
-    if (sel && D.places[sel]) { bar.hidden = false; bar.textContent = '🌸 Pilihan Minggu: ' + D.places[sel].name + ' — ketuk “Aku pilih ini” di kartu lain untuk mengganti.'; }
-    else bar.hidden = true;
+    var bar = $('chosenBar'); bar.textContent = '';
+    bar.hidden = false;
+    if (sel) {
+      bar.className = 'chosen on';
+      bar.appendChild(el('span', 'ctext', 'Minggu ini kita ke: ' + D.places[sel].name + ' 🌸'));
+      var cb2 = el('button', 'btn ghost sm', 'Batal'); cb2.type = 'button';
+      cb2.onclick = function () { choose(''); };
+      bar.appendChild(cb2);
+    } else {
+      bar.className = 'chosen';
+      bar.appendChild(el('span', 'ctext', 'Belum ada pilihan. Pilih satu tempat di bawah ya 🌸'));
+    }
   }
 
   /* ---------- Tabs ---------- */
@@ -129,16 +165,17 @@
   }
   function renderMapChips() {
     var box = $('mapChips'); box.textContent = '';
-    [['jum', 'Jum'], ['sab', 'Sab'], ['min', 'Min'], ['pilihan', 'Pilihan']].forEach(function (f) {
+    [['semua', 'Semua'], ['jum', 'Jum'], ['sab', 'Sab'], ['min', 'Min'], ['pilihan', 'Pilihan']].forEach(function (f) {
       var b = el('button', 'chip' + (f[0] === 'pilihan' ? ' pinkchip' : '') + (mapFilter === f[0] ? ' on' : ''), f[1]);
-      b.type = 'button';
+      b.type = 'button'; b.setAttribute('aria-pressed', mapFilter === f[0]);
       b.onclick = function () { mapFilter = f[0]; renderMapChips(); drawMap(); };
       box.appendChild(b);
     });
   }
   function popup(p) {
     var d = el('div', 'pp');
-    d.appendChild(el('b', '', p.name));
+    if (p.foto) { var im = el('img', 'ppimg'); im.src = p.foto; im.alt = p.name; im.loading = 'lazy'; d.appendChild(im); }
+    d.appendChild(el('b', '', (p.emoji ? p.emoji + ' ' : '') + p.name));
     var day = D.days.filter(function (x) { return x.id === p.day; })[0];
     d.appendChild(el('small', '', day ? day.full : ''));
     d.appendChild(link('btn', 'Rute', routeUrl(p.name + ' ' + p.area)));
@@ -150,24 +187,25 @@
     Object.keys(D.places).forEach(function (id) {
       var p = D.places[id];
       if (p.lat == null) return;
-      var show = mapFilter === 'pilihan' ? id === sel : p.day === mapFilter;
+      var show = mapFilter === 'semua' ? true : mapFilter === 'pilihan' ? id === sel : p.day === mapFilter;
       if (show) ids.push(id);
     });
-    if (mapFilter === 'sab') {
+    if (mapFilter === 'sab' || mapFilter === 'semua') {
       var line = D.sabRoute.map(function (id) { var p = D.places[id]; return [p.lat, p.lng]; });
       L.polyline(line, { color: '#252B2C', weight: 2.5, dashArray: '6 8', opacity: .8 }).addTo(layer);
     }
     ids.forEach(function (id) {
       var p = D.places[id], isSel = id === sel;
-      var size = isSel ? 22 : 16;
-      var ic = L.divIcon({ className: '', html: '<div class="pin' + (p.pick ? ' pk' : '') + (isSel ? ' hi' : '') + '" style="width:' + size + 'px;height:' + size + 'px"></div>', iconSize: [size, size], iconAnchor: [size / 2, size / 2] });
-      L.marker([p.lat, p.lng], { icon: ic, title: p.name, keyboard: true }).bindPopup(popup(p), { closeButton: true }).addTo(layer);
+      var size = isSel ? 44 : 32;
+      var html = '<div class="pin d-' + p.day + (isSel ? ' hi' : '') + '" style="width:' + size + 'px;height:' + size + 'px;font-size:' + (isSel ? 22 : 16) + 'px"><span>' + (p.emoji || '📍') + '</span>' + (isSel ? '<i class="ck">✓</i>' : '') + '</div>';
+      var ic = L.divIcon({ className: 'pinwrap', html: html, iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2] });
+      L.marker([p.lat, p.lng], { icon: ic, title: p.name, keyboard: true, zIndexOffset: isSel ? 1000 : 0 }).bindPopup(popup(p), { closeButton: true }).addTo(layer);
       pts.push([p.lat, p.lng]);
     });
     var note = '';
     if (mapFilter === 'pilihan' && !sel) note = 'Belum ada pilihan Minggu. Pilih dulu di tab Rencana 🌸';
-    else if (mapFilter === 'pilihan' && sel && D.places[sel].lat == null) note = D.places[sel].name + ' belum punya pin (koordinat belum ketemu). Pakai tombol Maps di kartunya.';
-    else if (mapFilter === 'min') note = 'Pin pink = pilihan Minggu. ' + missing() ;
+    else if (sel && D.places[sel].lat == null && (mapFilter === 'pilihan' || mapFilter === 'min' || mapFilter === 'semua')) note = D.places[sel].name + ' belum punya pin (koordinat belum ketemu). Pakai tombol Maps di kartunya.';
+    else if (mapFilter === 'min' || mapFilter === 'semua') note = missing();
     $('mapNote').textContent = note;
     if (pts.length > 1) mapObj.fitBounds(pts, { padding: [40, 40], maxZoom: 15 });
     else if (pts.length === 1) mapObj.setView(pts[0], 14);

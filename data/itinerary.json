@@ -27,7 +27,7 @@
       "id": "min", "label": "Min", "full": "Minggu, 22 Nov",
       "items": [
         {"time": "Pagi", "title": "Aslam jemput Wulan", "place": "Jemput di kos", "note": "Bawa tas ya.", "route": null},
-        {"time": "Pagi–siang", "title": "Jalan-jalan pilihan Wulan 🌸", "place": "Pilih di bagian bawah", "note": "Semua pilihan ada di “Pilih tempat Minggu”.", "route": null},
+        {"time": "Pagi–siang", "pickSlot": true, "title": "Jalan-jalan pilihan Wulan 🌸", "place": "Pilih di bagian bawah", "note": "Semua pilihan ada di “Pilih tempat Minggu”.", "route": null},
         {"time": "Siang", "title": "Makan siang & salat", "place": "Dekat tempat pilihan", "note": "", "route": null},
         {"time": "Sore", "title": "Antar Wulan pulang", "place": "Ke kos", "note": "Sekalian kembalikan motor.", "route": null},
         {"time": "±18:00–19:00", "title": "Travel ke Jakarta", "place": "Pool travel", "note": "Pool menyusul.", "route": null}
@@ -42,20 +42,20 @@
     {"id": "jauh", "title": "Paling jauh", "places": ["tepi"]}
   ],
   "places": {
-    "baltos": {"name": "Baltos", "area": "Bandung", "day": "jum", "lat": -6.898807, "lng": 107.608480, "src": "Brief (OSM/Nominatim)", "approx": false},
-    "masjid": {"name": "Masjid Agung Trans Studio", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9259196, "lng": 107.635428, "src": "OSM/Nominatim: node place_of_worship 'Masjid Agung Trans Studio' (dicari FE 19 Nov)", "approx": false},
-    "expat": {"name": "Expat. Roasters Gatot Subroto", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9298, "lng": 107.6392, "src": "Brief (perkiraan, tidak ketemu di Nominatim)", "approx": true},
-    "damri": {"name": "Sate Damri", "area": "Cinambo, Bandung Timur", "day": "sab", "lat": -6.93714, "lng": 107.68602, "src": "Plus Code 3M7P+4CR didekode PM; FE cek reverse Nominatim: Jl. Cisaranten Wetan, Babakan Penghulu, Cinambo (wajar, perkiraan)", "approx": true},
-    "hanami": {"name": "Hanami Cafe & Sky Lounge", "area": "Jl. Cihampelas 254, Bandung", "day": "min", "pick": true, "lat": -6.9060, "lng": 107.6044, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Sakura buatan dan rooftop, cantik buat foto.", "dist": "dekat"},
-    "pvj": {"name": "Paris Van Java", "area": "Jl. Sukajadi, Bandung", "day": "min", "pick": true, "lat": -6.889073, "lng": 107.596093, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Ada kebun bunga matahari, mungkin musiman.", "dist": "dekat"},
-    "unos": {"name": "Unos Cafe", "area": "Jl. Dago Giri, Bandung", "day": "min", "pick": true, "lat": -6.8377, "lng": 107.6363, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Taman bunga dengan pemandangan kota.", "dist": "sedang"},
-    "sinie": {"name": "Sinie Garden", "area": "Pagerwangi, Lembang", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim (4 query) → tanpa pin", "approx": false, "desc": "Kebun bunga yang adem di Pagerwangi, Lembang.", "dist": "sedang"},
-    "gias": {"name": "Gia's Grange", "area": "Jl. Raya Tangkuban Parahu, Cibogo", "day": "min", "pick": true, "lat": -6.809227, "lng": 107.627776, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Spot santai di jalur Tangkuban Parahu.", "dist": "jauh"},
-    "bukit": {"name": "Bukit Strawberry", "area": "Jl. Raya Tangkuban Parahu 109, Cibogo", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim → tanpa pin", "approx": false, "desc": "Kebun stroberi di jalur Tangkuban Parahu.", "dist": "jauh"},
-    "golden": {"name": "Golden Pine (Orchid Forest)", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.780199, "lng": 107.637932, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hutan pinus dan bunga di Orchid Forest Cikole.", "dist": "jauh"},
-    "bruriram": {"name": "Bruriram", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.779563, "lng": 107.643721, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hydrangea dan pinus, suasana sejuk.", "dist": "jauh"},
-    "strobilus": {"name": "Strobilus Cafe & Resto", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.778904, "lng": 107.642608, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Makan di antara pinus dan hydrangea.", "dist": "jauh"},
-    "tepi": {"name": "Tepi Gunung", "area": "Kertawangi, Cisarua, KBB", "day": "min", "pick": true, "lat": -6.807625, "lng": 107.558351, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Padang bunga di kaki gunung, paling jauh tapi paling lega.", "dist": "jauh"}
+    "baltos": {"name": "Baltos", "emoji": "🛍️", "area": "Bandung", "day": "jum", "lat": -6.898807, "lng": 107.608480, "src": "Brief (OSM/Nominatim)", "approx": false},
+    "masjid": {"name": "Masjid Agung Trans Studio", "emoji": "🕌", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9259196, "lng": 107.635428, "src": "OSM/Nominatim: node place_of_worship 'Masjid Agung Trans Studio' (dicari FE 19 Nov)", "approx": false},
+    "expat": {"name": "Expat. Roasters Gatot Subroto", "emoji": "☕", "area": "Jl. Gatot Subroto, Bandung", "day": "sab", "lat": -6.9298, "lng": 107.6392, "src": "Brief (perkiraan, tidak ketemu di Nominatim)", "approx": true},
+    "damri": {"name": "Sate Damri", "emoji": "🍢", "area": "Cinambo, Bandung Timur", "day": "sab", "lat": -6.93714, "lng": 107.68602, "src": "Plus Code 3M7P+4CR didekode PM; FE cek reverse Nominatim: Jl. Cisaranten Wetan, Babakan Penghulu, Cinambo (wajar, perkiraan)", "approx": true},
+    "hanami": {"name": "Hanami Cafe & Sky Lounge", "emoji": "🌸", "foto": null, "area": "Jl. Cihampelas 254, Bandung", "day": "min", "pick": true, "lat": -6.9060, "lng": 107.6044, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Sakura buatan dan rooftop, cantik buat foto.", "dist": "dekat"},
+    "pvj": {"name": "Paris Van Java", "emoji": "🌻", "foto": "foto/minggu/pvj.jpg", "area": "Jl. Sukajadi, Bandung", "day": "min", "pick": true, "lat": -6.889073, "lng": 107.596093, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Ada kebun bunga matahari, mungkin musiman.", "dist": "dekat"},
+    "unos": {"name": "Unos Cafe", "emoji": "☕", "foto": "foto/minggu/unos.jpg", "area": "Jl. Dago Giri, Bandung", "day": "min", "pick": true, "lat": -6.8377, "lng": 107.6363, "src": "Brief (perkiraan level jalan)", "approx": true, "desc": "Taman bunga dengan pemandangan kota.", "dist": "sedang"},
+    "sinie": {"name": "Sinie Garden", "emoji": "🌸", "foto": "foto/minggu/sinie.jpg", "area": "Pagerwangi, Lembang", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim (4 query) → tanpa pin", "approx": false, "desc": "Kebun bunga yang adem di Pagerwangi, Lembang.", "dist": "sedang"},
+    "gias": {"name": "Gia's Grange", "emoji": "☕", "foto": "foto/minggu/gias.jpg", "area": "Jl. Raya Tangkuban Parahu, Cibogo", "day": "min", "pick": true, "lat": -6.809227, "lng": 107.627776, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Spot santai di jalur Tangkuban Parahu.", "dist": "jauh"},
+    "bukit": {"name": "Bukit Strawberry", "emoji": "🍓", "foto": "foto/minggu/bukit.jpg", "area": "Jl. Raya Tangkuban Parahu 109, Cibogo", "day": "min", "pick": true, "lat": null, "lng": null, "src": "Tidak ditemukan di OSM/Nominatim → tanpa pin", "approx": false, "desc": "Kebun stroberi di jalur Tangkuban Parahu.", "dist": "jauh"},
+    "golden": {"name": "Golden Pine (Orchid Forest)", "emoji": "🌲", "foto": "foto/minggu/golden.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.780199, "lng": 107.637932, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hutan pinus dan bunga di Orchid Forest Cikole.", "dist": "jauh"},
+    "bruriram": {"name": "Bruriram", "emoji": "🌸", "foto": "foto/minggu/bruriram.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.779563, "lng": 107.643721, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Hydrangea dan pinus, suasana sejuk.", "dist": "jauh"},
+    "strobilus": {"name": "Strobilus Cafe & Resto", "emoji": "🍽️", "foto": "foto/minggu/strobilus.jpg", "area": "Cikole, Lembang", "day": "min", "pick": true, "lat": -6.778904, "lng": 107.642608, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Makan di antara pinus dan hydrangea.", "dist": "jauh"},
+    "tepi": {"name": "Tepi Gunung", "emoji": "⛰️", "foto": "foto/minggu/tepi.jpg", "area": "Kertawangi, Cisarua, KBB", "day": "min", "pick": true, "lat": -6.807625, "lng": 107.558351, "src": "Brief (OSM/Nominatim)", "approx": false, "desc": "Padang bunga di kaki gunung, paling jauh tapi paling lega.", "dist": "jauh"}
   },
   "sabRoute": ["masjid", "expat", "damri"]
 }
