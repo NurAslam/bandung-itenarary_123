@@ -292,6 +292,6 @@
     renderChips(); renderTimeline(); renderPick();
     document.querySelectorAll('.tabbtn').forEach(function (b) { b.onclick = function () { showTab(b.dataset.tab); }; });
   }
-  fetch('data/itinerary.json').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
+  fetch('data/itinerary.json?v=1853').then(function (r) { return r.json(); }).then(function (j) { D = j; init(); })
     .catch(function () { document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Data belum bisa dimuat. Coba muat ulang.</p>'); });
 })();
